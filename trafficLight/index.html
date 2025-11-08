@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奇点信号灯</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .main {
+            width: 800px;
+            height: 800px;
+            margin: 50px auto 0;
+            position: relative;
+            overflow: hidden;
+            background-color: #779aa2;
+        }
+
+        .gelidai {
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.xinxisea.com%2Fpublic%2Fpcimgs%2F20953%2F159106700750340.jpg&refer=http%3A%2F%2Fimg.xinxisea.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1670069035&t=2f1d1ef494c6c5c872b844847e0f1c16);
+            background-repeat: no-repeat;
+        }
+
+        .gelidai1 {
+            position: absolute;
+            left: -300px;
+            top: -300px;
+            background-position-y: bottom;
+        }
+
+        .gelidai2 {
+            position: absolute;
+            right: -300px;
+            top: -300px;
+            background-position-y: bottom;
+        }
+
+        .gelidai3 {
+            position: absolute;
+            left: -300px;
+            bottom: -300px;
+        }
+
+        .gelidai4 {
+            position: absolute;
+            right: -300px;
+            bottom: -300px;
+        }
+
+        .honglvdeng {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            left: 250px;
+            top: 250px;
+        }
+
+        .banmaxian {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            left: 180px;
+            top: 180px;
+
+        }
+
+        .honglvdeng .heng,
+        .honglvdeng .shu {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+        }
+
+        .shu {
+            transform: rotate(90deg);
+            transform-origin: 0 0;
+            left: 34px;
+        }
+
+        .shu2 {
+            left: 300px;
+        }
+
+        .heng2 {
+            top: auto;
+            bottom: 34px;
+        }
+
+        .red,
+        .green,
+        .yellow {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: red;
+            display: inline-block;
+            position: absolute;
+            left: 133px;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .yellow {
+            background-color: #ffaa00;
+            animation: 0.8s infinite linear;
+        }
+
+        .heng .red {
+            opacity: 0;
+        }
+
+        .heng .green {
+            opacity: 0;
+        }
+
+        .heng .yellow {
+            opacity: 0;
+        }
+
+        .shu .red {
+            opacity: 0;
+        }
+
+        .shu .green {
+            opacity: 0;
+        }
+
+        .shu .yellow {
+            opacity: 0;
+        }
+
+        .banmaxians {
+            display: flex;
+            position: absolute;
+            width: 64%;
+            justify-content: space-between;
+            left: 18%;
+        }
+
+        .banmaxiansbaixian {
+            background-color: #fff;
+            width: 5px;
+            height: 50px;
+        }
+
+        .banmaxians2 {
+            bottom: 0;
+        }
+
+        .banmaxians3,
+        .banmaxians4 {
+            transform: rotate(90deg);
+            transform-origin: 0 50px;
+            top: 4%;
+        }
+
+        .banmaxians3 {
+            left: 0px;
+        }
+
+        .banmaxians4 {
+            left: calc(100% - 50px);
+        }
+
+        .yellowline {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .yellowline1,
+        .yellowline2 {
+            top: calc(50% - 5px);
+            width: 174px;
+            height: 0px;
+            border-top: 10px dashed #ffaa00;
+        }
+
+        .yellowline2 {
+            right: 0;
+        }
+
+        .yellowline3,
+        .yellowline4 {
+            left: calc(50% - 5px);
+            height: 174px;
+            width: 0px;
+            border-left: 10px dashed #ffaa00;
+        }
+
+        .yellowline4 {
+            bottom: 0;
+        }
+
+        .cars {
+            background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.51yuansu.com%2Fpic3%2Fcover%2F03%2F77%2F80%2F5c00e75e93e1a_610.jpg&refer=http%3A%2F%2Fbpic.51yuansu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1670080424&t=701f38fc205c20a9a07fd37972b6e587);
+            width: 24px;
+            height: 56px;
+            background-size: 310% auto;
+            background-position: -24px -11px;
+            position: absolute;
+            left: 43%;
+            animation: 5s infinite linear;
+            z-index: 10;
+        }
+
+        .cars1 {
+            transform-origin: 0 0;
+            transform: rotate(180deg) translateY(0px);
+            animation-name: car1;
+            animation-play-state: paused;
+        }
+
+        .cars2 {
+            bottom: 0px;
+            left: 55%;
+            animation-name: car2;
+            animation-play-state: paused;
+            transform: translateY(64px);
+        }
+
+        .cars3 {
+            top: 55%;
+            left: 0%;
+            transform-origin: 0 0;
+            transform: rotate(90deg) translateY(0px);
+            animation-name: car3;
+        }
+
+        .cars4 {
+            top: 44%;
+            right: 0%;
+            transform-origin: 0 0;
+            transform: rotate(-90deg) translateY(26px);
+            left: auto;
+            animation-name: car4;
+        }
+        #qq{
+            position: absolute;
+            left: calc(50% - 25px);
+            top: calc(50% - 59px);
+            transform: rotate(90deg);
+            transform-origin: 25px 59px;
+            transition: 0.6s;
+            width: 50px;
+            height: 118px;
+        }
+
+        @keyframes yellowDH {
+            0% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.2;
+            }
+        }
+        @keyframes car1 {
+            from{transform: rotate(180deg) translateY(0px);}
+            to{transform: rotate(180deg) translateY(-900px);}
+        }
+        @keyframes car2 {
+            from{transform: translateY(60px);}
+            to{transform: translateY(-900px);}
+        }
+        @keyframes car3 {
+            from{transform: rotate(90deg) translateY(0px);}
+            to{transform: rotate(90deg) translateY(-900px);}
+        }
+        @keyframes car4 {
+            from{transform: rotate(-90deg) translateY(26px);}
+            to{transform: rotate(-90deg) translateY(-900px);}
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="yellowline yellowline1"></div>
+        <div class="yellowline yellowline2"></div>
+        <div class="yellowline yellowline3"></div>
+        <div class="yellowline yellowline4"></div>
+        <div class="gelidai gelidai1"></div>
+        <div class="gelidai gelidai2"></div>
+        <div class="gelidai gelidai3"></div>
+        <div class="gelidai gelidai4"></div>
+        <div class="cars cars1"></div>
+        <div class="cars cars2"></div>
+        <div class="cars cars3"></div>
+        <div class="cars cars4"></div>
+        <img src="./qiqijingcha.jpg" alt="" id="qq">
+        <div class="banmaxian">
+            <div class="banmaxians banmaxians1"></div>
+            <div class="banmaxians banmaxians2"></div>
+            <div class="banmaxians banmaxians3"></div>
+            <div class="banmaxians banmaxians4"></div>
+        </div>
+        <div class="honglvdeng">
+            <div class="heng">
+                <div class="red"></div>
+                <div class="green"></div>
+                <div class="yellow"></div>
+            </div>
+            <div class="heng heng2">
+                <div class="red"></div>
+                <div class="green"></div>
+                <div class="yellow"></div>
+            </div>
+            <div class="shu">
+                <div class="red"></div>
+                <div class="green"></div>
+                <div class="yellow"></div>
+            </div>
+            <div class="shu shu2">
+                <div class="red"></div>
+                <div class="green"></div>
+                <div class="yellow"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let banmaxiansbaixian = "<div class='banmaxiansbaixian'></div>";
+    for (let index = 0; index < 20; index++) {
+        banmaxiansbaixian = banmaxiansbaixian + "<div class='banmaxiansbaixian'></div>";
+    }
+    document.querySelectorAll('.banmaxian .banmaxians').forEach((item) => {
+        item.innerHTML = banmaxiansbaixian;
+    })
+    let heng = true;
+    let hengred = document.querySelectorAll('.heng .red');
+    let henggreen = document.querySelectorAll('.heng .green');
+    let hengyellow = document.querySelectorAll('.heng .yellow');
+    let shured = document.querySelectorAll('.shu .red');
+    let shugreen = document.querySelectorAll('.shu .green');
+    let shuyellow = document.querySelectorAll('.shu .yellow');
+    let cars = document.querySelectorAll('.cars ');
+    function hld() {
+        if (heng) {
+            for (let index = 0; index < 2; index++) {
+                hengred[index].style = "opacity:1";
+                henggreen[index].style = "opacity:0";
+                hengyellow[index].style = "opacity:0";
+                shured[index].style = "opacity:0";
+                shuyellow[index].style = "opacity:0";
+                shugreen[index].style = "opacity:1";
+            }
+        } else {
+            for (let index = 0; index < 2; index++) {
+                hengred[index].style = "opacity:0";
+                henggreen[index].style = "opacity:1";
+                hengyellow[index].style = "opacity:0";
+                shured[index].style = "opacity:1";
+                shuyellow[index].style = "opacity:0";
+                shugreen[index].style = "opacity:0";
+            }
+        }
+        heng = !heng;
+    }
+    hld()
+    setInterval(() => {
+        if (heng) {
+            for (let index = 0; index < 2; index++) {
+                hengyellow[index].style = "animation-name:yellowDH";
+            }
+            if(cars[0].getBoundingClientRect().top<174){
+                cars[0].style = 'animation-play-state: paused';
+                cars[1].style = 'animation-play-state: paused';
+            }else{
+                let s=(894-cars[0].getBoundingClientRect().top - 100) / 894 * 5000
+                setTimeout(() => {
+                    cars[0].style = 'animation-name:car';
+                    cars[1].style = 'animation-name:car';
+                }, s);
+            }
+        } else {
+            for (let index = 0; index < 2; index++) {
+                shuyellow[index].style = "animation-name:yellowDH";
+            }
+            if(cars[2].getBoundingClientRect().left<301){
+                cars[2].style = 'animation-play-state: paused';
+                cars[3].style = 'animation-play-state: paused';
+            }else{
+                let s=(1022.5-cars[2].getBoundingClientRect().left-0) / 1022.5 * 5000
+                setTimeout(() => {
+                    cars[2].style = 'animation-name:car';
+                    cars[3].style = 'animation-name:car';
+                }, s);
+            }
+        }
+        setTimeout(() => {
+            for (let index = 0; index < 2; index++) {
+                shuyellow[index].style = "animation-name:''";
+                hengyellow[index].style = "animation-name:''";
+            }
+            if(heng){
+                cars[2].style = 'animation-name:car3;animation-play-state: running';
+                cars[3].style = 'animation-name:car4;animation-play-state: running';
+                document.getElementById('qq').style="transform: rotate(90deg);"
+            }else{
+                cars[0].style = 'animation-name:car1;animation-play-state: running';
+                cars[1].style = 'animation-name:car2;animation-play-state: running';
+                document.getElementById('qq').style="transform: rotate(0deg);"
+            }
+            hld();
+        }, 3000);
+    }, 11000);
+</script>

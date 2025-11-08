@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>期货技术分析</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }
+    *{margin: 0;padding: 0;}
+    .card {
+        float: left;
+        border: 1px solid #837b7b;
+        margin: 5px;
+        padding: 5px;
+    }
+    #content:after{
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    span {
+        color: #f50a0a;
+        font-size: 12px;
+    }
+
+    .reading {
+        background-color: #c3a8a8
+    }
+    button{margin: 10px auto;display: block;}
+</style>
+
+<body>
+
+    <div id="content">
+
+    </div>
+    <script>
+        var param = [
+        "28条期货交易法则.pdf",
+        "【接轨华尔街—期货市场获利实用技法】.pdf",
+        "前端宝典.pdf",
+        "期货交易策略和专业商品交易者.斯坦利.pdf",
+        "期货大作手风云录.pdf",
+        "每日交易心理训练 - 101条规则把您训练成交易心.pdf",
+        "献给还在挣扎中的期货兄弟们.pdf",
+        "超越技术分析(图沙尔.钱德).pdf",
+        "高级技术分析（布鲁斯.巴布科克).pdf"
+        ];
+        let cards = ``;
+        param.forEach((ke,i) => {
+            let card = ``;
+            card = card + `<span src="/qihuojishu/${ke}" id="${i}" class="file ${i == localStorage.getItem('indexId') ? 'reading' : ''}">${ke}</span>`
+            card = `<div class='card'>${card}</div>`;
+            cards = cards + card;
+        });
+        document.getElementById('content').innerHTML = cards;
+    </script>
+    <script>
+        document.querySelectorAll('.file').forEach(item => {
+            item.onclick = function () {
+                sessionStorage.setItem('src', this.getAttribute('src'));
+                localStorage.setItem('indexId', this.getAttribute('id'))
+                window.location.href='./list.html'
+            }
+        });
+    </script>
+</body>
+
+</html>

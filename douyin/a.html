@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>哥仨果业后台</title>
+    <meta name="description" content="吃上一口哥仨桃，不用美颜不显老">
+    <link rel="icon" href="./icon.jpg">
+    
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    input{
+        margin: 10px;
+        height: 40px;
+    }
+    button{
+        height: 40px;
+        text-align: center;
+    }
+    #show{
+        padding: 15px;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+    <input type="text" id="title" placeholder="title">
+    <input type="text" id="url" placeholder="url">
+    <button onclick="shengcheng()">生成</button>
+    <div id="show"></div>
+    <script>
+        function shengcheng(){
+            var str='http://www.chaozhenkai.com/douyin/?title=';
+            var url = document.getElementById('url').value;
+            var title = document.getElementById('title').value;
+            str = str + title + '&url=' + url;
+            document.getElementById('show').innerHTML=str;
+        }
+    </script>
+    
+</body>
+
+</html>

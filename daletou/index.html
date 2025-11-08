@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大乐透历史数据分析</title>
+</head>
+<style>
+    .kaijianghao span {
+        box-sizing: border-box;
+        border: 1px solid #dcdcdc;
+        display: inline-block;
+        color: #333;
+        padding: 4px;
+        margin: 2px 4px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .kaijianghao .red,
+    .kaijianghao .blue {
+        background: crimson;
+        color: #fff;
+    }
+
+    .kaijianghao .blue {
+        background: blue;
+    }
+
+
+    .clear::after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    .kaijianghao span.blueleft {
+        margin-left: 60px;
+    }
+
+    .btn {
+        display: none;
+    }
+</style>
+
+<body class="clear">
+    <button id="btn" class="btn" onclick="paixu()">正向/反向排序</button>
+    <div id="content">
+    </div>
+    <div id="loading">数据加载中,请稍等...</div>
+    <script src="./jquery.min.js"></script>
+    <script>
+        var jsonData = [];
+        var page = 1;
+        var loading = true;
+        function getJsonData() {
+            $('#btn').hide();
+            $('#loading').show();
+            $.get({
+                async: true,
+                url: `https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=85&provinceId=0&pageSize=100&isVerify=1&pageNo=${page}&startTerm=19001&endTerm=24999`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    if (page === 1) {
+                        var setDate = new Date(new Date(res.value.lastPoolDraw.lotteryDrawTime + ' 21:30:00')).getTime();
+                        localStorage.setItem('date', setDate)
+                    }
+                    jsonData = jsonData.concat(res.value.list);
+                    if (page < 9) {
+                        page++;
+                        getJsonData(page);
+                    } else {
+                        jsonData = jsonData.map((item) => { return { "num": item.lotteryDrawResult.replace(/ /g, ','), "id": item.lotteryDrawNum, "date": item.lotteryDrawTime } }).reverse();
+                        $('#btn').show();
+                        $('#loading').hide();
+                        localStorage.setItem('jsonData', JSON.stringify(jsonData));
+                        showPage();
+                    }
+                }
+            })
+        }
+        if (localStorage.getItem('date') && localStorage.getItem('jsonData')) {
+            var getDate = +(localStorage.getItem('date'));
+            var nowDate = new Date().getTime();
+            if ((nowDate - getDate) < 171000000) {
+                jsonData = JSON.parse(localStorage.getItem('jsonData'));
+                $('#btn').show();
+                $('#loading').hide();
+                showPage()
+            } else {
+                if (nowDate - getDate < 257400000 && new Date().getDay() === 6) {
+                    jsonData = JSON.parse(localStorage.getItem('jsonData'));
+                    $('#btn').show();
+                    $('#loading').hide();
+                    showPage()
+                } else {
+                    getJsonData(page);
+                }
+            }
+        } else {
+            getJsonData(page);
+        }
+        function paixu() {
+            $('#content').html('');
+            jsonData = JSON.parse(JSON.stringify(jsonData.reverse()));
+            showPage(true)
+        }
+        function showPage(isPaixu) {
+            !isPaixu ? jsonData = jsonData.map((item) => { item.num = item.num.split(',').map((item2) => { return +(item2) }); return item; }) : '';
+            var str = '';
+            jsonData.forEach((item, i) => {
+                str = str + `<div class="kaijianghao"><span class="date">${item.date}</span>`;
+                for (let index = 1; index < 36; index++) {
+                    str = str + `<span class="${item.num.includes(index) && item.num.indexOf(index) < 5 ? 'red' : ''}">${index < 10 ? '0' + index : index}</span>`;
+                }
+                for (let index = 1; index < 13; index++) {
+                    str = str + `<span class="${item.num.lastIndexOf(index) > 4 ? 'blue' : ''} ${index === 1 ? 'blueleft' : ''}">${index < 10 ? '0' + index : index}</span>`;
+                }
+                str = str + "</div>";
+            })
+            $('#content').html(str);
+        }
+    </script>
+
+
+</body>
+
+</html>

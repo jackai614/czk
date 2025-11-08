@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+</head>
+<style>
+    .lan{
+        float: left;
+        color: #fff;
+        margin: 5px;
+        border-radius: 5px;
+        padding: 6px;
+        box-sizing: border-box;
+        font-size: 12px;
+    }
+    .clear::after{
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+    .oushu{
+        background: red;
+    }
+    .jishu{
+        background: blue;
+    }
+    .color0{
+        background: rgb(2, 2, 87);
+    }
+    .color1{
+        background: rgb(143, 3, 3);
+    }
+    .color2{
+        background: rgb(156, 120, 3);
+    }
+    .wai{
+        border: 1px solid #3f2b2b;
+        float: left;
+        margin: 4px;
+    }
+</style>
+<body>
+<div id="blue" class="clear"></div>
+<div><button onclick="qiehuancolor(1)">奇偶展示</button>
+    <button onclick="qiehuancolor(2)">012路展示</button></div>
+
+    <script src="./jquery.min.js"></script>
+    
+    <script>
+        var lan = [];
+        $.getJSON({
+            async: true,
+            url: './ssq.json',
+            type: 'GET',
+            dataType: 'json',
+            success: function(res){
+                lan = res.map((l)=>{
+                    return l.num.split(',')[6];
+                })
+                var lanStr=''
+                lan.forEach((element,i) => {
+                    if(i % 3 === 0){
+                        lanStr = lanStr + `<div class='wai clear'>`;
+                    }
+                    lanStr = lanStr + `<div class="lan clear ${Number(element) % 2 === 0 ? 'oushu' : 'jishu'} ${'color' + Number(element) % 3}">
+                        <div class='jiou'>${Number(element) % 2 === 0 ? '偶数' : '奇数'}</div>
+                        <div class='lu012'>${Number(element) % 3 }</div>
+                        </div>`;
+                    if(i % 3 === 2 && i >0){
+                        lanStr = lanStr + `</div>`;
+                    }
+                });
+                $('#blue').html(lanStr)
+            }
+        })
+        function qiehuancolor(a){
+            if(a === 1){
+                $('.color0').css({background:'none'});
+                $('.color1').css({background:'none'});
+                $('.color2').css({background:'none'});
+                $('.oushu').css({background:'red'});
+                $('.jishu').css({background:'blue'});
+            }else{
+                $('.oushu').css({background:'none'});
+                $('.jishu').css({background:'none'});
+                $('.color0').css({background:'rgb(2, 2, 87)'});
+                $('.color1').css({background:'rgb(143, 3, 3)'});
+                $('.color2').css({background:'rgb(156, 120, 3)'});
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自动刷新</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        iframe{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="" frameborder="0" id="ifr"></iframe>
+    <script>
+        let url=null;
+        if(sessionStorage.getItem('url')){
+            // url=sessionStorage.getItem('url');           
+        }else{
+            window.location.href='./index.html';
+        }
+        setInterval(() => {
+            sessionStorage.getItem('url').includes('?')?url=sessionStorage.getItem('url')+'&time='+new Date().getTime():url=sessionStorage.getItem('url')+'?time='+new Date().getTime();
+            document.getElementById('ifr').src=url;
+        }, 3000);
+    </script>
+</body>
+</html>

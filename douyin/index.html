@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>哥仨果业</title>
+    <meta name="description" content="吃上一口哥仨桃，不用美颜不显老">
+    <link rel="icon" href="./icon.jpg">
+    
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    #loading{
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        text-align: center;
+        line-height: 50vh;
+        font-size: 36px;
+        color: orangered
+    }
+    #video{
+        display: none;
+    }
+    .foot{
+        display: none;
+        position: fixed;
+        z-index: 3;
+        bottom: 0;
+        left: 0;
+        height: 60px;
+        /*line-height: 60px;*/
+        border-top: 1px solid #dcdcdc;
+        vertical-align: middle;
+        box-sizing: border-box;
+        padding: 10px 15px;
+    }
+    .icon{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+    .foot span{
+        vertical-align: middle;
+    }
+    .name span{
+        background-color: red;
+        color: #fff;
+        border-radius: 50%;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        font-size: 12px;
+        text-align: center;
+        margin-left: 3px;
+        margin-right: -1px;
+    }
+    .bang{
+        font-size: 12px;
+        text-align: right;
+        line-height: 1.5;
+        color: #c1c1c1;
+        width: 50%;
+        float: right;
+    }
+    .douyin{
+        position: fixed;
+        width: 100vw;
+        height: calc(100vh - 60px);
+        left: 0;
+        top: 0;
+        z-index: 5;
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="loading">数据加载中...</div>
+    <video id="video" controls src=""></video>
+    <div class="foot" onclick="share()">
+        <img src="./icon.jpg" alt="" class="icon">
+        <span class="name">哥仨果业<span>V</span></span>
+        <span class="bang">
+            古有桃园三结义<br>今有哥仨好兄弟
+        </span>
+    </div>
+    <img src="./douyin.jpg" class="douyin" alt="">
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramValue = urlParams.get('title'); // 'paramName'是要获取的参数名
+        document.querySelector('title').innerText = paramValue || '哥仨果业';
+        document.getElementById('video').setAttribute('src',`http://www.gesafruit.com/image/?url=${urlParams.get('video')}`);
+    </script>
+    <script>
+        window.onload=function(){
+            document.getElementById('video').style.display='block';
+            document.querySelector('.foot').style.display='block';
+            document.getElementById('loading').style.display='none';
+        }
+        function share(){
+           document.querySelector('.douyin').style.display='block'; 
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>走奇门</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #content,
+    #ssq,
+    #dlt {
+        box-sizing: border-box;
+        padding: 6px;
+    }
+
+    .gongge {
+        float: left;
+        width: calc(100% / 3);
+        border: 1px solid #dcdcdc;
+        box-sizing: border-box;
+        padding: 6px;
+    }
+
+    .gongge span {
+        display: block;
+    }
+
+    .gongge .bagua {
+        float: right;
+    }
+
+    .title {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .clear::after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    .bashen {
+        color: #855903;
+    }
+
+    .jiuxing {
+        color: red;
+    }
+
+    .bagua {
+        color: rgb(5, 5, 131);
+    }
+
+    .bamen {
+        color: rgb(45, 126, 126);
+    }
+
+    .red {
+        color: red;
+    }
+
+    .blue {
+        color: blue;
+    }
+    .active{
+        background-color: #d8bcbc;
+    }
+    .btns{
+        text-align: center;
+    }
+    #content .gongge span{
+        height: 22px;
+    }
+</style>
+
+<body>
+    <div class="btns">
+        <form id="bs">
+            <input type="radio" name="bashen" id="yang" value="yang" checked>
+            <label for="yang">阳遁逆排</label>
+            <input type="radio" name="bashen" id="yin" value="yin">
+            <label for="yin">阴遁顺排</label>
+        </form>
+        <button onclick="show()">确定</button>
+    </div>
+    <div id="content" class="clear"></div>
+    <div class="title">双色球排列</div>
+    <div id="ssq" class="clear"></div>
+    <div class="title">大乐透排列</div>
+    <div id="dlt" class="clear"></div>
+    <script>
+        var clickArr = [];
+        var jiuxing = ['天辅星', '天英星', '天芮(ruì)星', '天冲星', '天禽星', '天柱星', '天任星', '天蓬星', '天心星'];
+        var bagua = ['巽(xùn)四', '离九', '坤二', '震三', '中五', '兑七', '艮八', '坎一', '乾六'];
+        var bamen = ['杜门', '景门', '死门', '伤门', '&#x3000', '惊门', '生门', '休门', '开门'];
+        var yinbashen = ['腾蛇', '值符', '九天', '太阴', '&#x3000', '九地', '六合', '白虎', '玄武'];
+        var yangbashen = ['九天', '值符', '腾蛇', '九地', '&#x3000', '太阴', '玄武', '白虎', '六合'];
+        var ssq = ['13,04,22,31', '18,09,27', '20,02,11,29', '12,03,21,30', '14,05,23,32', '16,07,25', '17,08,26', '10,01,19,28', '15,06,24,33'];
+        var ssqlan = ['04,13', '09', '02,11', '03,12', '05,14', '07,16', '08', '01,10', '06,15'];
+        var dlt = ['13,04,22,31', '18,09,27', '20,02,11,29', '12,03,21,30', '14,05,23,32', '16,07,25,34', '17,08,26,35', '10,01,19,28', '15,06,24,33'];
+        var dltlan = ['04', '09', '02,11', '03,12', '05', '07', '08', '01,10', '06'];
+
+        function show() {
+            var bsValue = document.getElementById('bs').querySelector("input[name='bashen']:checked").value;
+            var str = '';
+            for (let index = 0; index < 9; index++) {
+                str = str + `<div class='gongge ${clickArr.includes(index)?'active':''}' onclick="checkGong(${index})">
+                    <span class='bashen'>${bsValue == 'yang' ? yangbashen[index] : yinbashen[index]}</span>
+                    <span class='jiuxing'>${jiuxing[index]}</span>
+                    <span class='bamen'>${bamen[index]}</span>
+                    <span class='bagua'>${bagua[index]}</span>
+                    </div>`;
+            }
+            document.getElementById('content').innerHTML = str;
+            showN();
+        }
+        function showN() {
+            var strssq = '';
+            var strdlt = '';
+            for (let index = 0; index < 9; index++) {
+                strssq = strssq + `<div class='gongge ${clickArr.includes(index)?'active':''}'>
+                    <span class='red'>${ssq[index]}</span>
+                    <span class='blue'>${ssqlan[index]}</span>
+                    </div>`;
+                strdlt = strdlt + `<div class='gongge ${clickArr.includes(index)?'active':''}'>
+                    <span class='red'>${dlt[index]}</span>
+                    <span class='blue'>${dltlan[index]}</span>
+                    </div>`;
+            }
+            document.getElementById('ssq').innerHTML = strssq;
+            document.getElementById('dlt').innerHTML = strdlt;
+        }
+        
+        function checkGong(index) {
+            if (clickArr.includes(index)) {
+                clickArr.splice(clickArr.indexOf(index), 1)
+            } else {
+                clickArr.push(index);
+            }
+            show();
+        }
+    </script>
+
+</body>
+
+</html>

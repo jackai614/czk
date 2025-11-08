@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双色球红球分析</title>
+</head>
+<style>
+    .kaijianghao {
+        box-sizing: border-box;
+        margin: 5px;
+        border: 1px solid #dcdcdc;
+        display: inline-block;
+    }
+
+    .kaijianghao span {
+        padding: 5px;
+        background: crimson;
+        color: #fff;
+        display: inline-block;
+        margin: 0 5px;
+        border-radius: 5px;
+    }
+
+    .content {
+        float: left;
+    }
+
+    .clear::after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    .btn {
+        display: none;
+    }
+
+</style>
+
+<body class="clear">
+    <button id="btn" class="btn" onclick="yuce()">开始分析</button>
+    <div id="loading">数据加载中,请稍等...</div>
+    <div id="result1"></div>
+    <div id="result2"></div>
+    <div id="result3"></div>
+    <div id="result4"></div>
+    <div id="result5"></div>
+
+    <script src="./jquery.min.js"></script>
+    <script>
+        var jsonData;
+        var redResult = [];
+        var allredResult = [];
+        var jisuanjieguo1 = [];
+        var jisuanjieguo3 = [];
+        var jisuanjieguo4 = [];
+        var jisuanjieguo8 = [];
+        var result1 = [];
+        var result3 = [];
+        var result4 = [];
+        var result7 = [];
+        var result8 = [];
+        var first = 0;
+        var page = 1;
+        var loading = true;
+        function getJsonData() {
+            loading = true;
+            $('#btn').hide();
+            $('#loading').show();
+            $.getJSON({
+                async: true,
+                url: `./ssqnew.json`,
+                // type: 'GET',
+                // dataType: 'jsonp',
+                success: function (res) {
+                    jsonData = res;
+                    loading = false;
+                    $('#btn').show();
+                    $('#loading').hide();
+                }
+            })
+        }
+        getJsonData();
+        function saveN(num) {
+            var arr = [];
+            for (let index = 0; index < 6; index++) {
+                var obj = {
+                    beichushu: sum - num,
+                    chushu: nums[index],
+                    shang: Math.floor((sum - num) / nums[index]),
+                    yushu: (sum - num) % (nums[index]),
+                    duibishu: nums[index] + (Math.floor((sum - num) / nums[index])) - (sum - num) % (nums[index])
+                };
+                arr.push(obj)
+            }
+
+            if (first < 7) {
+                redResult.push(arr);
+            }
+            if (first === 6) {
+                allredResult.push(redResult);
+            }
+            first = first + 1;
+            if (first < 7) {
+                saveN(nums[first - 1]);
+            }
+        }
+
+        function yuce() {
+            jsonData.forEach((item, i) => {
+                nums = item.num.split(',').splice(0, 6).map((str) => { str = +(str); return str; });
+                sum = nums.reduce((a, b) => { return a + b });
+                first = 0;
+                redResult = [];
+                saveN(0);
+            })
+            setTimeout(() => {
+                jisuan()
+            }, 10);
+        }
+        function jisuan() {
+            allredResult.forEach((item, i) => {
+                item.forEach(item2 => {
+                    chazhaoxiangtong(item2, i);
+                });
+            })
+            nextNum();
+        }
+        function nextNum() {
+            var arr = allredResult[allredResult.length - 1];
+            arr.forEach((item, i) => {
+                var arr = [];
+                item.forEach((item2, m) => {
+                    if (m === 0) {
+                        var firstArr = [];
+                        if (firstArr.includes(item2.shang + item2.yushu)) {
+                            if (jisuanjieguo8.length) {
+                                var arr8 = jisuanjieguo8.filter((item) => { return item.length }).map((item1) => { return item1.map((item3) => { return item3.kaijianghao }).join(',') }).join(',').split(',').map((item4) => { return +(item4) });
+                                if (arr8.includes(item2.shang + item2.yushu)) {
+                                    result8.push(item2.shang + item2.yushu)
+                                }
+                            }
+                        } else {
+                            firstArr.push(item2.shang + item2.yushu)
+                        }
+                    }
+                    if (item2.shang === item2.yushu) {
+                        chazhaojieguo4(item2);
+                    } else {
+                        item.forEach((item3, n) => {
+                            if (n > m) {
+                                if (item2.shang === item3.yushu && item3.shang === item2.yushu) {
+                                    chazhaojieguo3(item2, item3);
+                                } else if (item3.duibishu === item2.duibishu) {
+                                    if (item2.yushu === 0 && item3.yushu === 0) {
+                                        chazhaojieguo7(item2, item3);
+                                    } else {
+                                        chazhaojieguo1(item2, item3);
+                                    }
+                                }
+                            }
+                        })
+                    }
+                })
+            })
+            setTimeout(() => {
+                if (result1.length) {
+                    $('#result1').html('相同可比数:' + result1.sort((a,b)=> a-b ).join(','));
+                }
+                if (result3.length) {
+                    $('#result2').html('互为倒数:' + result3.sort((a,b)=> a-b ).join(','));
+                }
+                if (result4.length) {
+                    $('#result3').html('分子分母相等:' + result4.sort((a,b)=> a-b ).join(','));
+                }
+                if (result7.length) {
+                    $('#result4').html('两个相同可比数的分母都为0:' + result7.sort((a,b)=> a-b ).join(','));
+                }
+                if (result8.length) {
+                    $('#result5').html('首页两个及以上分子与分母之和相等:' + result8.sort((a,b)=> a-b ).join(','));
+                }
+            }, 100);
+        }
+        function chazhaojieguo3(obj1, obj2) {
+            jisuanjieguo3.forEach((item) => {
+                if (item.length) {
+                    item.forEach((item2) => {
+                        if ((item2[0].duibishu === obj1.duibishu && item2[0].shang === obj1.shang && item2[0].chushu === obj1.chushu && item2[0].yushu === obj1.yushu &&
+                            item2[1].duibishu === obj2.duibishu && item2[1].shang === obj2.shang && item2[1].chushu === obj2.chushu && item2[1].yushu === obj2.yushu) ||
+                            (item2[1].duibishu === obj1.duibishu && item2[1].shang === obj1.shang && item2[1].chushu === obj1.chushu && item2[1].yushu === obj1.yushu &&
+                                item2[0].duibishu === obj2.duibishu && item2[0].shang === obj2.shang && item2[0].chushu === obj2.chushu && item2[0].yushu === obj2.yushu)) {
+                            result3.push(item2[0].kaijianghao)
+                        }
+                    })
+                }
+            })
+        }
+        function chazhaojieguo1(obj1, obj2) {
+            jisuanjieguo1.forEach((item) => {
+                if (item.length) {
+                    item.forEach((item2) => {
+                        if ((item2[0].duibishu === obj1.duibishu && item2[0].shang === obj1.shang && item2[0].chushu === obj1.chushu && item2[0].yushu === obj1.yushu &&
+                            item2[1].duibishu === obj2.duibishu && item2[1].shang === obj2.shang && item2[1].chushu === obj2.chushu && item2[1].yushu === obj2.yushu) ||
+                            (item2[1].duibishu === obj1.duibishu && item2[1].shang === obj1.shang && item2[1].chushu === obj1.chushu && item2[1].yushu === obj1.yushu &&
+                                item2[0].duibishu === obj2.duibishu && item2[0].shang === obj2.shang && item2[0].chushu === obj2.chushu && item2[0].yushu === obj2.yushu)) {
+                            result1.push(item2[0].kaijianghao)
+                        }
+                    })
+                }
+            })
+        }
+        function chazhaojieguo7(obj1, obj2) {
+            jisuanjieguo1.forEach((item) => {
+                if (item.length) {
+                    item.forEach((item2) => {
+                        if ((item2[0].duibishu === obj1.duibishu && item2[0].shang === obj1.shang && item2[0].chushu === obj1.chushu && item2[0].yushu === obj1.yushu &&
+                            item2[1].duibishu === obj2.duibishu && item2[1].shang === obj2.shang && item2[1].chushu === obj2.chushu && item2[1].yushu === obj2.yushu) ||
+                            (item2[1].duibishu === obj1.duibishu && item2[1].shang === obj1.shang && item2[1].chushu === obj1.chushu && item2[1].yushu === obj1.yushu &&
+                                item2[0].duibishu === obj2.duibishu && item2[0].shang === obj2.shang && item2[0].chushu === obj2.chushu && item2[0].yushu === obj2.yushu)) {
+                            result7.push(item2[0].kaijianghao)
+                        }
+                    })
+                }
+            })
+        }
+        function chazhaojieguo4(obj) {
+            jisuanjieguo4.forEach((item) => {
+                if (item.length) {
+                    item.forEach((item2) => {
+                        if (item2.chushu === obj.chushu && item2.shang === obj.shang && item2.yushu === obj.yushu) {
+                            result4.push(item2.kaijianghao)
+                        }
+                    })
+                }
+            })
+        }
+        function chazhaoxiangtong(arr, i) {
+            jisuanjieguo1[i] = [];
+            jisuanjieguo3[i] = [];
+            jisuanjieguo4[i] = [];
+            jisuanjieguo8[i] = [];
+            if (i < jsonData.length - 1) {
+                var data = jsonData[i + 1].num.split(',').splice(0, 6).map((item) => { return +(item) });
+                arr.forEach((item, index) => {
+                    if (item.shang === item.yushu) { // 方法4,分子分母相等的情况
+                        if (data.includes(item.shang)) {
+                            var obj = Object.assign({ kaijianghao: item.shang }, item)
+                            jisuanjieguo4[i].push(obj);
+                        }
+                        if (data.includes(item.shang * 2)) {
+                            var obj = Object.assign({ kaijianghao: item.shang * 2 }, item)
+                            jisuanjieguo4[i].push(obj);
+                        }
+                        if (data.includes(item.chushu)) {
+                            var obj = Object.assign({ kaijianghao: item.chushu }, item)
+                            jisuanjieguo4[i].push(obj);
+                        }
+                        if (data.includes(item.chushu + item.shang)) {
+                            var obj = Object.assign({ kaijianghao: item.chushu + item.shang }, item)
+                            jisuanjieguo4[i].push(obj);
+                        }
+                        if (data.includes(item.chushu - item.shang)) {
+                            var obj = Object.assign({ kaijianghao: item.chushu - item.shang }, item)
+                            jisuanjieguo4[i].push(obj);
+                        }
+                    } else {
+                        arr.forEach((item2, j) => { //方法3,两组分子分母互为倒数
+                            if (j > index) {
+                                if (item2.shang === item.yushu && item.shang === item2.yushu) {
+                                    if (data.includes(Math.abs(item.shang - item.yushu))) {
+                                        var obj = Object.assign({ kaijianghao: Math.abs(item.shang - item.yushu) }, item);
+                                        var obj2 = Object.assign({ kaijianghao: Math.abs(item.shang - item.yushu) }, item2)
+                                        jisuanjieguo3[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(item.shang + item.yushu)) {
+                                        var obj = Object.assign({ kaijianghao: item.shang + item.yushu }, item)
+                                        var obj2 = Object.assign({ kaijianghao: item.shang + item.yushu }, item2)
+                                        jisuanjieguo3[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(item.shang)) {
+                                        var obj = Object.assign({ kaijianghao: item.shang }, item)
+                                        var obj2 = Object.assign({ kaijianghao: item.shang }, item2)
+                                        jisuanjieguo3[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(item.yushu)) {
+                                        var obj = Object.assign({ kaijianghao: item.yushu }, item)
+                                        var obj2 = Object.assign({ kaijianghao: item.yushu }, item2)
+                                        jisuanjieguo3[i].push([obj, obj2]);
+                                    }
+                                } else if (item.duibishu === item2.duibishu) {//方法1,两组可比数相同
+                                    if (data.includes(item.shang + item2.shang)) {
+                                        var obj = Object.assign({ kaijianghao: item.shang + item2.shang }, item)
+                                        var obj2 = Object.assign({ kaijianghao: item.shang + item2.shang }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(item.yushu + item2.yushu)) {
+                                        var obj = Object.assign({ kaijianghao: item.yushu + item2.yushu }, item)
+                                        var obj2 = Object.assign({ kaijianghao: item.yushu + item2.yushu }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(Math.abs(item.shang - item2.shang))) {
+                                        var obj = Object.assign({ kaijianghao: Math.abs(item.shang - item2.shang) }, item);
+                                        var obj2 = Object.assign({ kaijianghao: Math.abs(item.shang - item2.shang) }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(Math.abs(item.yushu - item2.yushu))) {
+                                        var obj = Object.assign({ kaijianghao: Math.abs(item.yushu - item2.yushu) }, item);
+                                        var obj2 = Object.assign({ kaijianghao: Math.abs(item.yushu - item2.yushu) }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(item.shang + item2.shang + item.yushu + item2.yushu)) {
+                                        var obj = Object.assign({ kaijianghao: item.shang + item2.shang + item.yushu + item2.yushu }, item)
+                                        var obj2 = Object.assign({ kaijianghao: item.shang + item2.shang + item.yushu + item2.yushu }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(Math.abs((item.shang + item2.shang) - (item.yushu + item2.yushu)))) {
+                                        var obj = Object.assign({ kaijianghao: Math.abs((item.shang + item2.shang) - (item.yushu + item2.yushu)) }, item);
+                                        var obj2 = Object.assign({ kaijianghao: Math.abs((item.shang + item2.shang) - (item.yushu + item2.yushu)) }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(Math.abs((item.shang + item2.shang) + (item.yushu + item2.yushu) - item.duibishu))) {
+                                        var obj = Object.assign({ kaijianghao: Math.abs((item.shang + item2.shang) + (item.yushu + item2.yushu) - item.duibishu) }, item);
+                                        var obj2 = Object.assign({ kaijianghao: Math.abs((item.shang + item2.shang) + (item.yushu + item2.yushu) - item.duibishu) }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (data.includes(item.duibishu)) {
+                                        var obj = Object.assign({ kaijianghao: item.duibishu }, item)
+                                        var obj2 = Object.assign({ kaijianghao: item.duibishu }, item2)
+                                        jisuanjieguo1[i].push([obj, obj2]);
+                                    }
+                                    if (item.yushu === 0 && item2.yushu === 0) { // 方法7,两组相同可比数的对象分母都为0的情况
+                                        if (data.includes(item.shang)) {
+                                            var obj = Object.assign({ kaijianghao: item.shang }, item)
+                                            var obj2 = Object.assign({ kaijianghao: item.shang }, item2)
+                                            jisuanjieguo1[i].push([obj, obj2]);
+                                        }
+                                        if (data.includes(item2.shang)) {
+                                            var obj = Object.assign({ kaijianghao: item2.shang }, item)
+                                            var obj2 = Object.assign({ kaijianghao: item2.shang }, item2)
+                                            jisuanjieguo1[i].push([obj, obj2]);
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                    }
+                    if (index === 0) {//方法8,首页中,两组及两组以上的分子+分母之和是同一个数
+                        var xiangtongshu = [];
+                        arr.forEach((item2, j) => {
+                            if (xiangtongshu.includes(item2.shang + item2.yushu)) {
+                                if (data.includes(item2.shang + item2.yushu)) {
+                                    var obj = Object.assign({ kaijianghao: item2.shang + item2.yushu }, item)
+                                    jisuanjieguo8[i].push(obj);
+                                }
+                            } else {
+                                xiangtongshu.push(item2.shang + item2.yushu)
+                            }
+                        })
+                    }
+                })
+
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>

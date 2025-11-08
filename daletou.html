@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大乐透预测</title>
+</head>
+<style>
+    .red input,
+    .blue input {
+        color: #fff;
+        border: red 1px solid;
+        outline: none;
+        box-shadow: none;
+        background-color: red;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: 20px;
+    }
+
+    .blue input {
+        border-color: blue;
+        background-color: blue;
+    }
+
+    .red,
+    .blue {
+        float: left;
+        text-align: center;
+    }
+
+    .red {
+        width: calc(100% / 7 * 5);
+    }
+
+    .blue {
+        width: calc(100% / 7 * 2);
+    }
+
+    button {
+        font-size: 20px;
+        margin: 20px auto;
+        display: block;
+    }
+
+    #red,
+    #blue {
+        padding: 10px 6px;
+        box-sizing: border-box;
+        font-size: 20px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 2;
+    }
+
+    #red .red {
+        background-color: red;
+        color: #fff;
+        margin-bottom: 10px;
+        width: 100%;
+        position: relative;
+    }
+
+    .page {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        width: 30px;
+        height: 30px;
+    }
+
+    #blue .blue {
+        background-color: blue;
+        color: #fff;
+        margin-top: 10px;
+        width: 100%;
+        position: relative;
+    }
+
+    .clear::after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+    .group {
+        border: 1px solid #fff;
+        margin: 5px;
+        display: flex;
+        float: left;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .group .left,
+    .group .center,
+    .group .right {
+        display: flex;
+        float: left;
+    }
+
+    .center {
+        flex-direction: column;
+    }
+
+    .top {
+        border-bottom: 1px solid #dcdddc;
+    }
+
+    .right {
+        margin-left: 6px;
+        font-size: 16px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        padding: 0 6px;
+    }
+
+    .left {
+        margin-right: 6px;
+    }
+
+    .btn {
+        width: 80px;
+        height: 40px;
+        background-color: #4e6ef2;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+    }
+</style>
+
+<body>
+    <div class="clear">
+        <div class="red">
+            <input type="text" id="red1" value="6">
+            <input type="text" id="red2" value="21">
+            <input type="text" id="red3" value="25">
+            <input type="text" id="red4" value="27">
+            <input type="text" id="red5" value="32">
+        </div>
+        <div class="blue">
+            <input type="text" id="blue1" value="8">
+            <input type="text" id="blue2" value="9">
+        </div>
+    </div>
+    <button class="btn" onclick="yuce()">预测</button>
+    <div id="red"></div>
+    <div id="blue"></div>
+
+    <script>
+        var num1 = +(document.getElementById('red1').value);
+        var num2 = +(document.getElementById('red2').value);
+        var num3 = +(document.getElementById('red3').value);
+        var num4 = +(document.getElementById('red4').value);
+        var num5 = +(document.getElementById('red5').value);
+        var num6 = +(document.getElementById('blue1').value);
+        var num7 = +(document.getElementById('blue2').value);
+        var nums = [num1, num2, num3, num4, num5, num6, num7];
+        var sum = num1 + num2 + num3 + num4 + num5 + num6 + num7;
+        var redResult = [];
+        var blueResult = [];
+        var redHTML = '';
+        var blueHTML = '';
+        var first = 0
+        function saveN(num) {
+            var arr = [];
+            for (let index = 0; index < 7; index++) {
+                var obj = {
+                    beichushu: sum - num,
+                    chushu: nums[index],
+                    shang: Math.floor((sum - num) / nums[index]),
+                    yushu: (sum - num) % (nums[index]),
+                    duibishu: nums[index] + (Math.floor((sum - num) / nums[index])) - (sum - num) % (nums[index])
+                };
+                arr.push(obj)
+            }
+
+            if (first < 6) {
+                redResult.push(arr)
+            } else {
+                if (first < 8) {
+                    blueResult.push(arr)
+                }
+            }
+            console.log(blueResult)
+            first = first + 1;
+            if (first < 8) {
+                saveN(nums[first - 1]);
+            }
+        }
+        function yuce() {
+            num1 = +(document.getElementById('red1').value);
+            num2 = +(document.getElementById('red2').value);
+            num3 = +(document.getElementById('red3').value);
+            num4 = +(document.getElementById('red4').value);
+            num5 = +(document.getElementById('red5').value);
+            num6 = +(document.getElementById('blue1').value);
+            num7 = +(document.getElementById('blue2').value);
+            nums = [num1, num2, num3, num4, num5, num6, num7];
+            sum = num1 + num2 + num3 + num4 + num5 + num6 + num7;
+            first = 0;
+            redResult = [];
+            blueResult = [];
+            redHTML = '';
+            blueHTML = '';
+            saveN(0)
+            setTimeout(() => {
+                var redStr = '';
+                var blueStr = '';
+                redResult.forEach((item, page) => {
+                    var str = '';
+                    item.forEach((group,i) => {
+                        str = str + `<div class='group clear' id='redGroup${page + '' + i}' onclick="clickGroup('redGroup${page + '' + i}')">
+                                <div class="left">${group.chushu}</div>
+                                <div class="center">
+                                    <span class="top">${group.shang}</span>
+                                    <span class="bottom">${group.yushu}</span>
+                                </div>
+                                <div class="right">${group.duibishu}</div>
+                            </div>`;
+                    })
+                    redStr = redStr + `<div class='red clear'>${str}<span class='page'>${page + 1}</span></div>`;
+                })
+                document.getElementById('red').innerHTML = redStr;
+                blueResult.forEach((item, page) => {
+                    var str = '';
+                    item.forEach((group,i) => {
+                        str = str + `<div class='group clear' id='blueGroup${page + '' + i}' onclick="clickGroup('blueGroup${page + '' + i}')">
+                                <div class="left">${group.chushu}</div>
+                                <div class="center">
+                                    <span class="top">${group.shang}</span>
+                                    <span class="bottom">${group.yushu}</span>
+                                </div>
+                                <div class="right">${group.duibishu}</div>
+                            </div>`;
+                    })
+                    blueStr = blueStr + `<div class='blue clear'>${str}<span class='page'>${page + 1}</span></div>`;
+                })
+                document.getElementById('blue').innerHTML = blueStr;
+            }, 1000);
+        }
+        function clickGroup(id) {
+            if (document.getElementById(id).style.backgroundColor === 'rgb(102, 102, 102)') {
+                document.getElementById(id).style.backgroundColor = '';
+            } else {
+                document.getElementById(id).style.backgroundColor = '#666';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

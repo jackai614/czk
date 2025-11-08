@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf_viewer.min.css"
+        integrity="sha512-qBj3yMdvzL7dOHWfvs21eTD0LURNR9Jhcy5ZMfR7E5NOKev5i9Iu49Yuijdm/or10JyenuaRuflq6DG/E04fcQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .Each_seware .seware_img {
+            display: none;
+        }
+
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 15px;
+        }
+
+        .Each_seware {
+            width: 100%;
+            vertical-align: middle;
+            margin: 8px 0;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        .Each_seware img {
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+        }
+
+        .Each_seware div {
+            display: inline-block;
+            width: calc(100% - 40px);
+            vertical-align: middle;
+        }
+
+        .right {
+            display: none;
+        }
+
+        .clear::after {
+            content: '';
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        .tab {
+            float: left;
+            width: 40%;
+            margin: 10px 5%;
+            padding: 6px;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .active {
+            background: rgb(4, 94, 94);
+            color: #dcdcdc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clear">
+        <div class="tab active" id="dz" onclick="tabs('left','dz')">电子教材</div>
+        <div class="tab" id='kj' onclick="tabs('right','kj')">课件</div>
+    </div>
+    <div class="left" id="left">
+        <div class="content seware">
+            <div class="chapter" onclick="showHide(1)">2024年公共基础直播课 <span class="point">☟</span> </div>
+            <ul>
+                <li class="Each_seware" title="公共基础-国防与军队1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YYyMyyhcKY.pdf"
+                        data-ext="pdf" class="seware_title">公共基础-国防与军队1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YYyMyyhcKY.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义哲学1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/xkMBYXkzJd.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义哲学1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/xkMBYXkzJd.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义哲学2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/wC5QPRTHyS.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义哲学2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/wC5QPRTHyS.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义哲学3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Kd4kDCY2MX.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义哲学3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Kd4kDCY2MX.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义哲学4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/FFrz4Tccw6.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义哲学4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/FFrz4Tccw6.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义哲学5.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/GRenWJk5WC.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义哲学5.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/GRenWJk5WC.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义哲学6.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TyppY27NPt.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义哲学6.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TyppY27NPt.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义哲学7.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/jQrNmHnhtr.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义哲学7.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/jQrNmHnhtr.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义政治经济学1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/MhwB4JdR4m.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义政治经济学1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/MhwB4JdR4m.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义政治经济学2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/sJDeaBaexB.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义政治经济学2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/sJDeaBaexB.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—马克思主义政治经济学3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/XCMCQ6WNbp.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—马克思主义政治经济学3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/XCMCQ6WNbp.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—科学社会主义.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/khFCRDeEnQ.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—科学社会主义.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/khFCRDeEnQ.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/m6sPik3rYa.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/m6sPik3rYa.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/hTmfE5YyAS.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/hTmfE5YyAS.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/bAAn5ZBKD7.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/bAAn5ZBKD7.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dQPprTPt5W.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dQPprTPt5W.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特5.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/EZAxtb7FNM.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特5.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/EZAxtb7FNM.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特6.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/FNPD2TpS6c.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特6.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/FNPD2TpS6c.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特7.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/zKy8xnnMEr.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特7.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/zKy8xnnMEr.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特8.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/7QJs7dGcxG.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特8.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/7QJs7dGcxG.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—毛中特9.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r5rFB5Kz6i.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—毛中特9.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r5rFB5Kz6i.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—二十大1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/GF5YjJSncK.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—二十大1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/GF5YjJSncK.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—二十大2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Dax2Wx88aT.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—二十大2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Dax2Wx88aT.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—历史1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/PXtxyR8T3W.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—历史1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/PXtxyR8T3W.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—历史2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YbGzxPYe8P.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—历史2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YbGzxPYe8P.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—历史3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5QsEebhH8d.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—历史3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5QsEebhH8d.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—文化常识1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/SC8SnpZnnj.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—文化常识1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/SC8SnpZnnj.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—文化常识2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TwjbZdFFzP.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—文化常识2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TwjbZdFFzP.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—思想道德.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nfctm4JWJM.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—思想道德.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nfctm4JWJM.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—法治1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/eRQYE6e4DT.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—法治1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/eRQYE6e4DT.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—法治2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/RQcen7C8sk.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—法治2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/RQcen7C8sk.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—法治3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aMhDmPepHZ.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—法治3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aMhDmPepHZ.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—科学技术.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/JixXHz7Ejs.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—科学技术.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/JixXHz7Ejs.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="公共基础—时事政治.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/k6iji2Pt3m.pdf"
+                        data-ext="pdf" class="seware_title">公共基础—时事政治.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/k6iji2Pt3m.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+            </ul>
+            <div class="chapter" onclick="showHide(2)">2024年岗位能力直播课 <span class="point">☟</span> </div>
+            <ul>
+                <li class="Each_seware" title="岗位能力—言语理解1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/JBKfwenWhx.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/JBKfwenWhx.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/B37JkFmchi.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/B37JkFmchi.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/CxHebGkGZR.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/CxHebGkGZR.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/wmG2JWH8hr.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/wmG2JWH8hr.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解5.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r4GSkh7QQK.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解5.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r4GSkh7QQK.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解6.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/fbJXdmQ8Jt.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解6.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/fbJXdmQ8Jt.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解7.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dXNF7jH5nT.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解7.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dXNF7jH5nT.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解8.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/HEPPHpwTzc.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解8.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/HEPPHpwTzc.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解9.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aZB57SpryF.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解9.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aZB57SpryF.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解10.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aSPwCDjn7y.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解10.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aSPwCDjn7y.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—言语理解11.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nTfG5fBrrF.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—言语理解11.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nTfG5fBrrF.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/kikHddwHf7.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/kikHddwHf7.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系5.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/exdQjYmWCj.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系5.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/exdQjYmWCj.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dcMdQYQJx6.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dcMdQYQJx6.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/W7h7MCy78e.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/W7h7MCy78e.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/G2psa2cnS2.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/G2psa2cnS2.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系6.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/NnJprmEYHd.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系6.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/NnJprmEYHd.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系7.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/i7Q4pznZTD.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系7.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/i7Q4pznZTD.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系8.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/KmGtCFEWdw.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系8.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/KmGtCFEWdw.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系9.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2y57nSQB2n.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系9.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2y57nSQB2n.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系10.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/b4JmTDSnfs.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系10.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/b4JmTDSnfs.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—数量关系11.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/atHQKX5aZ7.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—数量关系11.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/atHQKX5aZ7.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—判断推理1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dZ4AGeiiXw.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—判断推理1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dZ4AGeiiXw.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r7aP523TYx.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r7aP523TYx.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/bQDKeBcZaW.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/bQDKeBcZaW.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YTfwekZW7G.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YTfwekZW7G.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断5.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aiBiMw5Z8p.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断5.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/aiBiMw5Z8p.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断6.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/CCj2epN4bE.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断6.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/CCj2epN4bE.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断7.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/hW6Me7aerr.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断7.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/hW6Me7aerr.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断8.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5mm5DzZJWT.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断8.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5mm5DzZJWT.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断9.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/FhNJ7haaeR.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断9.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/FhNJ7haaeR.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断10.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/XjyC4nB5bB.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断10.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/XjyC4nB5bB.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断11.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Zprw4N6TEE.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断11.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Zprw4N6TEE.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断12.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/J7pfy3ZHAp.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断12.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/J7pfy3ZHAp.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断13.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5CEfbcEfWi.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断13.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5CEfbcEfWi.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断14.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/4sjEGcCcP7.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断14.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/4sjEGcCcP7.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断15.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nZFcnXb28R.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断15.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nZFcnXb28R.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—推理判断16.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/XhjJxAWEzS.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—推理判断16.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/XhjJxAWEzS.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—资料分析1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dcfwFstkxy.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—资料分析1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/dcfwFstkxy.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—资料分析2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/SZQrHeHbnC.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—资料分析2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/SZQrHeHbnC.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—资料分析3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/tsZ8yN7WiA.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—资料分析3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/tsZ8yN7WiA.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="岗位能力—资料分析4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/HWzMMcyK46.pdf"
+                        data-ext="pdf" class="seware_title">岗位能力—资料分析4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/HWzMMcyK46.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+            </ul>
+            <div class="chapter" onclick="showHide(3)">2024年公共基础预测冲刺课 <span class="point">☟</span> </div>
+            <ul>
+                <li class="Each_seware" title="预测冲刺课—马克思主义原理1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2Mbdewmy6N.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—马克思主义原理1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2Mbdewmy6N.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—马克思主义原理2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/e8htMCWAkf.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—马克思主义原理2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/e8htMCWAkf.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—马克思主义原理3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/m2hNCFjXCj.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—马克思主义原理3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/m2hNCFjXCj.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—毛中特1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/A6dH3kQCaM.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—毛中特1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/A6dH3kQCaM.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—毛中特2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/iB8ycpP5d2.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—毛中特2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/iB8ycpP5d2.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—毛中特3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/NNn7YnRJ2D.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—毛中特3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/NNn7YnRJ2D.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—毛中特4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/7MbWDCFK2Z.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—毛中特4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/7MbWDCFK2Z.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—二十大.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Km2mdBtytx.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—二十大.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Km2mdBtytx.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—历史.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/eYraPKDG5x.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—历史.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/eYraPKDG5x.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+            </ul>
+            <div class="chapter" onclick="showHide(4)">2024年岗位能力预测冲刺课 <span class="point">☟</span> </div>
+            <ul>
+                <li class="Each_seware" title="预测冲刺课—数量关系3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/SZcaCJtRGD.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—数量关系3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/SZcaCJtRGD.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—数量关系2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TWpH4d8Z5c.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—数量关系2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TWpH4d8Z5c.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—言语理解与表达1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Xw6cKEkpJX.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—言语理解与表达1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Xw6cKEkpJX.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—言语理解与表达2.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r8RKSHrR7C.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—言语理解与表达2.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/r8RKSHrR7C.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—言语理解与表达3.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YxzbkZKcZn.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—言语理解与表达3.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YxzbkZKcZn.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—言语理解与表达4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TRC5mh2ifA.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—言语理解与表达4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/TRC5mh2ifA.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—数量关系1.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Fy43bwEkrt.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—数量关系1.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/Fy43bwEkrt.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+                <li class="Each_seware" title="预测冲刺课—数量关系4.pdf">
+                    <img src="https://www.xdketang.com/Public/HomeNew/img/course/courseware.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5AMEZZEXak.pdf"
+                        data-ext="pdf" class="seware_title">预测冲刺课—数量关系4.pdf </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/5AMEZZEXak.pdf"
+                        class="seware_img">
+                        <img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right" id="right">
+        <div class="textbook content" style="">
+
+            <div class="chapter" onclick="showHide(5)">文职时政 <span class="point">☟</span> </div>
+            <ul>
+                <li class="Each_seware" title="24年6月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YBfY8k3kcr.pdf"
+                        data-ext="pdf" class="seware_title">24年6月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/YBfY8k3kcr.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年5月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/eMit7f75HM.pdf"
+                        data-ext="pdf" class="seware_title">24年5月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/eMit7f75HM.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年4月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2CDMP5Kcss.pdf"
+                        data-ext="pdf" class="seware_title">24年4月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2CDMP5Kcss.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年3月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/ABemJhnCyd.pdf"
+                        data-ext="pdf" class="seware_title">24年3月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/ABemJhnCyd.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年2月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/8C7wba7GXG.pdf"
+                        data-ext="pdf" class="seware_title">24年2月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/8C7wba7GXG.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年1月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/8GxyfAyiFn.pdf"
+                        data-ext="pdf" class="seware_title">24年1月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/8GxyfAyiFn.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年7月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/xdsCWYADJS.pdf"
+                        data-ext="pdf" class="seware_title">24年7月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/xdsCWYADJS.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年8月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nQEzWcFTXh.pdf"
+                        data-ext="pdf" class="seware_title">24年8月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/nQEzWcFTXh.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年9月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2YaPFnZr2c.pdf"
+                        data-ext="pdf" class="seware_title">24年9月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/2YaPFnZr2c.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年10月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/xyXsjM4ni7.pdf"
+                        data-ext="pdf" class="seware_title">24年10月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/xyXsjM4ni7.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="24年11月时政总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/psHxQsYnZp.pdf"
+                        data-ext="pdf" class="seware_title">24年11月时政总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/psHxQsYnZp.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <div class="chapter" onclick="showHide(6)">2024年岗位能力直播课 <span class="point">☟</span></div>
+            <ul>
+                <li class="Each_seware" title="常见的成语辨析"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/JR6scEifMf.pdf"
+                        data-ext="pdf" class="seware_title">常见的成语辨析 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/JR6scEifMf.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="实词词性及基础语法"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/3Jdbwkwzej.pdf"
+                        data-ext="pdf" class="seware_title">实词词性及基础语法 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/3Jdbwkwzej.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="成语知识点总结"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/cxC43jN3MP.pdf"
+                        data-ext="pdf" class="seware_title">成语知识点总结 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/cxC43jN3MP.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+            <ul>
+                <li class="Each_seware" title="易误用成语"><img
+                        src="https://www.xdketang.com/Public/HomeNew/img/course/textbook.png" alt="">
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/fWCXHzp42k.pdf"
+                        data-ext="pdf" class="seware_title">易误用成语 </div>
+                    <div data-url="https://juzijiaoshi.oss-cn-beijing.aliyuncs.com/episode/fWCXHzp42k.pdf"
+                        class="seware_img"><img src="https://www.xdketang.com/Public/HomeNew/img/downloadWare.png"
+                            alt=""></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <a href="./index.html">所有课程目录</a>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.min.mjs"></script>
+<script>
+    document.querySelectorAll('.seware_title').forEach((item, i) => {
+        // console.log(item.getAttribute('data-url'))
+        item.onclick = function (e) {
+            var url = e.target.dataset.url;
+            window.location.href = './yulan.html?url=' + url;
+            
+        }
+    })
+    function showHide(i) {
+
+    }
+    function tabs(name, tab) {
+        document.getElementById('left').style.display = 'none';
+        document.getElementById('right').style.display = 'none';
+        document.getElementById(name).style.display = 'block';
+        document.querySelectorAll('.tab')[0].classList.remove('active')
+        document.querySelectorAll('.tab')[1].classList.remove('active')
+        document.getElementById(tab).classList.add('active')
+    }
+    
+
+</script>
+
+</html>
