@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #content {
+            font-size: 14px;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        p{
+            padding: 30px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <p><a
+        href="https://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice?name=3d&issueCount=100&issueStart=&issueEnd=&dayStart=&dayEnd=&pageNo=1&pageSize=100&week=&systemType=PC">获取数据</a>
+   <input type="text" id="data"></p>
+        <div id="content" onclick="getdata()"><button>获取数据</button></div>
+</body>
+
+</html>
+
+<script>
+    function getdata(){
+        var data=document.getElementById('data').value;
+        if(data){
+            data=JSON.parse(data).result;
+            data=data.map((item)=>{
+                var red = item.red.replace(/\,/g,'');
+                red = Number(red);
+                return red;
+            })
+            data=data.reverse();
+            // document.getElementById('content').innerText = JSON.stringify(data)
+            document.getElementById('data').value = JSON.stringify(data) + '这是一个数字数组，找一下有什么规律？最后一个数字'+data[data.length-1]+'后面大概率会出现什么数字？'
+        }
+       
+    }
+
+    
+</script>
