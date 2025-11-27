@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssq</title>
+</head>
+
+<body>
+    <a
+        href="https://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice?name=ssq&issueCount=&issueStart=&issueEnd=&dayStart=&dayEnd=&pageNo=1&pageSize=1&week=&systemType=PC">获取数据</a>
+    <div id="content"></div>
+    <input type="text" id="datas">
+    <button onclick="getRes()">查看结果</button>
+    <script>
+        function getRes() {
+            var data = document.getElementById('datas').value;
+            data = JSON.parse(data);
+            data = data.result[0].red.split(',').concat(data.result[0].blue.split(','))
+            console.log(data)
+            var he1 = Number(data[0].substr(0, 1)) + Number(data[0].substr(1, 1))
+            var he2 = Number(data[1].substr(0, 1)) + Number(data[1].substr(1, 1))
+            var he3 = Number(data[2].substr(0, 1)) + Number(data[2].substr(1, 1))
+            var he4 = Number(data[3].substr(0, 1)) + Number(data[3].substr(1, 1))
+            var he5 = Number(data[4].substr(0, 1)) + Number(data[4].substr(1, 1))
+            var he6 = Number(data[5].substr(0, 1)) + Number(data[5].substr(1, 1))
+            var he7 = Number(data[6].substr(0, 1)) + Number(data[6].substr(1, 1))
+            var zongfen = he1 + he2 + he3 + he4 + he5 + he6 + he7;
+            var zongfenhe = '' + zongfen > 100 ? zongfen : '0' + zongfen
+            zongfenhe = Number(zongfenhe.substr(0, 1)) + Number(zongfenhe.substr(1, 1)) + Number(zongfenhe.substr(2, 1))
+            var lanwei = Number(data[6].substr(1, 1))
+            var redweihe = Number(data[0].substr(1, 1)) + Number(data[1].substr(1, 1)) + Number(data[2].substr(1, 1)) + Number(data[3].substr(1, 1)) + Number(data[4].substr(1, 1)) + Number(data[5].substr(1, 1))
+            var zhishus = ['01', '03', '05', '07', '11', '13', '17', '19', '23', '29', '31'];
+            var zhishu = 0;
+            data.forEach((item, i) => {
+                i < 7 && zhishus.includes(item) ? zhishu++ : '';
+            });
+            console.log(zhishu)
+            var sha1 = (Number(data[5]) - Number(data[1]) - Number(data[6].substr(1, 1))) % 16
+            console.log(sha1)
+            var sha2 = (Number(data[2]) - Number(zongfenhe) + he2) % 16
+            console.log(sha2)
+            var sha3 = (Number(data[6]) - Number(zongfenhe) + zhishu) % 16
+            console.log(sha3)
+            var sha4 = (Number(data[4]) - Number(data[1]) - he4) % 16
+            console.log(sha4)
+            var sha5 = (Number(data[4]) - Number(data[2]) - lanwei) % 16
+            console.log(sha5)
+            var sha6 = (redweihe - Number(data[0]) + zhishu) % 16
+            console.log(sha6)
+            var sha7 = (Number(data[6]) - he1) % 16
+            console.log(sha7)
+            var sha8 = (Number(data[5]) - Number(data[2]) - zhishu) % 16
+            console.log(sha8)
+            var sha9 = (Number(data[3]) - zongfenhe) % 16
+            console.log(sha9)
+            var arr = [sha1, sha2, sha3, sha4, sha5, sha6, sha7, sha8, sha9].sort((a, b) => { return a - b })
+
+            console.log(arr)
+            document.getElementById('content').innerText = JSON.stringify(arr)
+        }
+    </script>
+</body>
+
+</html>
